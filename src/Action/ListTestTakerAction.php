@@ -26,10 +26,16 @@ class ListTestTakerAction
 
     public function __invoke(Request $request): Response
     {
+        // TODO : Handle limit, offset, filter.
+
         $dataSource = $request->query->get('dataSource', static::DEFAULT_DATA_SOURCE);
 
         $serializedTestTakers = $this->serializer->serialize($this->listTestTakerService->listTestTakers($dataSource), 'json');
 
-        return JsonResponse::fromJsonString($serializedTestTakers);
+        $response = JsonResponse::fromJsonString($serializedTestTakers);
+
+        $response->headers->add(['Access-Control-Allow-Origin' => '*']);
+
+        return $response;
     }
 }
