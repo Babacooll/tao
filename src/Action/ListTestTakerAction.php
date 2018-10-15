@@ -5,7 +5,6 @@ namespace App\Action;
 use App\Service\ListTestTakerService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class ListTestTakerAction
@@ -24,7 +23,7 @@ class ListTestTakerAction
         $this->serializer = $serializer;
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): JsonResponse
     {
         // TODO : Handle limit, offset, filter.
 

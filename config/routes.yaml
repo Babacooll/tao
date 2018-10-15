@@ -1,3 +1,7 @@
-index:
+list_test_takers:
     path: /test-takers
     controller: App\Action\ListTestTakerAction
+
+get_test_taker:
+    path: /test-takers/{id}
+    controller: App\Action\GetTestTakerAction
