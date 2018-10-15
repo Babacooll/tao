@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  description: Test Tao API
+  version: 0.0.1
+  title: Test Tao API
+servers:
+  - url: 'http://localhost/'
+    description: The local docker API server
+paths:
+  "/test-takers":
+    get:
+      summary: "List test takers"
+      operationId: "listTestTakers"
+      parameters:
+        - $ref: '#/components/parameters/DataSourceParameter'
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TestTakerList"
+components:
+  parameters:
+    DataSourceParameter:
+      in: query
+      name: limit
+      required: false
+      description: The data source you want to fetch (json / csv)
+      schema:
+        type: string
+  schemas:
+    TestTaker:
+      type: "object"
+      properties:
+        login:
+          type: "string"
+        password:
+          type: "string"
+        title:
+          type: "string"
+        lastname:
+          type: "string"
+        firstname:
+          type: "string"
+        gender:
+          type: "string"
+        email:
+          type: "string"
+        picture:
+          type: "string"
+        address:
+          type: "string"
+    TestTakerList:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/TestTaker"

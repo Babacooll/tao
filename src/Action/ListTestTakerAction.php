@@ -1,0 +1,35 @@
+<?php declare(strict_types=1);
+
+namespace App\Action;
+
+use App\Service\ListTestTakerService;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
+
+class ListTestTakerAction
+{
+    private const DEFAULT_DATA_SOURCE = 'json';
+
+    /** @var ListTestTakerService */
+    private $listTestTakerService;
+
+    /** @var SerializerInterface */
+    private $serializer;
+
+    public function __construct(SerializerInterface $serializer, ListTestTakerService $listTestTakerService)
+    {
+        $this->listTestTakerService = $listTestTakerService;
+        $this->serializer = $serializer;
+    }
+
+    public function __invoke(Request $request): Response
+    {
+        $dataSource = $request->query->get('dataSource', static::DEFAULT_DATA_SOURCE);
+
+        $serializedTestTakers = $this->serializer->serialize($this->listTestTakerService->listTestTakers($dataSource), 'json');
+
+        return JsonResponse::fromJsonString($serializedTestTakers);
+    }
+}

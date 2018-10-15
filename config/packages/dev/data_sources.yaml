@@ -1,0 +1,3 @@
+parameters:
+  testTakersDataSources.json: '%kernel.root_dir%/../data/testtakers.json'
+  testTakersDataSources.csv:  '%kernel.root_dir%/../data/testtakers.csv'

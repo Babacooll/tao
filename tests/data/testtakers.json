@@ -1,0 +1,24 @@
+[
+  {
+    "login":"login1",
+    "password":"password1",
+    "title":"title1",
+    "lastname":"lastname1",
+    "firstname":"firstname1",
+    "gender":"gender1",
+    "email":"email1",
+    "picture":"picture1",
+    "address":"address1"
+  },
+  {
+    "login":"login2",
+    "password":"password2",
+    "title":"title2",
+    "lastname":"lastname2",
+    "firstname":"firstname2",
+    "gender":"gender2",
+    "email":"email2",
+    "picture":"picture2",
+    "address":"address2"
+  }
+]

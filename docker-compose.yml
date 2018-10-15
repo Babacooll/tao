@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  tao_test_nginx:
+    image: nginx:stable
+    ports:
+      - "80:80"
+    volumes_from:
+      - tao_test_phpfpm:ro
+    volumes:
+      - ./docker/nginx/sites.conf:/etc/nginx/conf.d/default.conf
+
+  tao_test_phpfpm:
+    build:
+      context: ./docker/phpfpm
+    volumes:
+      - ./:/var/www/tao-test
+    working_dir: /var/www/tao-test
